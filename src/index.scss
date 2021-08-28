@@ -14,13 +14,27 @@ html {
   min-height: 100vh;
   font-size: 62.5%; /*1rem = 10px*/
 
-  @media only screen and (min-width: 95em) {
-    font-size: 84.5%; //1rem = 13.5px
-  }
+  // @media only screen and (min-width: 95em) {
+  //   font-size: 84.5%; //1rem = 13.5px
+  // }
 }
 
 body {
   min-height: 100vh;
   box-sizing: border-box;
   background-color: #f7f7fa;
+  margin: 1.5rem;
+  padding: 1.5rem 1.5rem 0 0;
+  border: 2px solid #ededf2;
+}
+
+main {
+  display: flex;
+}
+
+.container {
+  max-width: 140rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
