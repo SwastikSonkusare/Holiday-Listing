@@ -34,6 +34,8 @@ main {
 
 .container {
   max-width: 140rem;
+  padding-inline: 5rem;
+
   display: flex;
   flex-direction: column;
   flex-grow: 1;

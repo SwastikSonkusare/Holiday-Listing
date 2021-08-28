@@ -1,0 +1,33 @@
+.holiday {
+  display: flex;
+  align-items: center;
+  margin-top: 2.5rem;
+  border-radius: 10px;
+  background-color: #fff;
+  opacity: 1;
+  padding: 0 2rem 2rem 2rem;
+
+  &__left-section {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 2rem;
+    padding: 6rem 0 0 2rem;
+  }
+
+  &__right-section {
+  }
+
+  &__button {
+    all: unset;
+    color: #232326;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 0.7rem 8rem 0.7rem 2rem;
+
+    &.active {
+      color: #405cd2;
+      background-color: #e1e6ff;
+      border-radius: 6px;
+    }
+  }
+}
