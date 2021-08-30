@@ -5,11 +5,13 @@ import filterIcon from "../../assets/icons/filter-line.svg";
 import plusIcon from "../../assets/icons/plus-line.svg";
 
 import "./HolidaySection.scss";
+import Modal from "../Modal/Modal";
 
 const HolidaySection = () => {
   const holidayTabs = ["General", "Holiday", "Leave"];
 
   const [holidayTabsSelect, setHolidayTabSelect] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <section className="holiday">
@@ -57,7 +59,7 @@ const HolidaySection = () => {
           <span>List(6)</span>
 
           <div className="holiday__list-right">
-            <div className="holiday__new-item">
+            <div className="holiday__new-item" onClick={() => setIsOpen(true)}>
               <img src={plusIcon} alt="plusIcon"></img>
               <span>Add New</span>
             </div>
@@ -77,9 +79,11 @@ const HolidaySection = () => {
         <div className="list">
           <table>
             <thead>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Date</th>
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Date</th>
+              </tr>
             </thead>
 
             <tbody>
@@ -92,6 +96,8 @@ const HolidaySection = () => {
           </table>
         </div>
       </div>
+
+      <Modal isOpen={isOpen} />
     </section>
   );
 };

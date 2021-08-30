@@ -1,0 +1,123 @@
+.modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 3rem;
+  min-width: 600px;
+  min-height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  opacity: 1;
+  z-index: 1000;
+
+  &__left-section {
+    padding-right: 2rem;
+    & h3 {
+      margin-bottom: 4rem;
+
+      & span {
+        color: #151b30;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__right-section {
+    padding-inline: 2rem;
+
+    position: relative;
+
+    & img {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &__form-control {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 5px;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid #dfdfdf;
+
+    & img {
+      position: absolute;
+      top: 50%;
+      right: 3px;
+      display: block;
+      width: 16px;
+      height: 14px;
+      z-index: 10;
+    }
+  }
+
+  &__label {
+    color: #9898a5;
+    font-weight: 600;
+  }
+
+  &__input {
+    color: #232326;
+    border: none;
+
+    &[type="date"]::-webkit-inner-spin-button,
+    &[type="date"]::-webkit-calendar-picker-indicator {
+      position: relative;
+      opacity: 0.1;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__select {
+    position: relative;
+
+    & select {
+      color: #232326;
+      font-size: 1.3rem;
+    }
+
+    &::after {
+      width: 18px;
+      height: 18px;
+      content: ">";
+      color: inherit;
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg) translateY(-50%);
+      position: absolute;
+      top: 40%;
+      right: 18px;
+      padding: 0 0 2px;
+      pointer-events: none;
+      font-weight: bold;
+      color: #bbbbbf;
+    }
+  }
+
+  &__container {
+    margin-top: 6rem;
+  }
+
+  &__paragraph {
+    color: #9898a5;
+    line-height: 1.5rem;
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+

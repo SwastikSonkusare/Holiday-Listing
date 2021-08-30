@@ -142,3 +142,38 @@
     }
   }
 }
+
+table {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+thead {
+  display: grid;
+  grid-template-columns: minmax(15rem, 25rem) minmax(30rem, 50rem) minmax(
+      15rem,
+      25rem
+    );
+  align-items: center;
+  width: 100%;
+  font-size: 1.3rem;
+  color: #bbbbbf;
+  padding: 0 0 1.2rem 0.2rem;
+  border-bottom: 2px solid #dfdfdf;
+}
+
+th {
+  font-size: 1.3rem;
+  color: #bbbbbf;
+  font-weight: 500;
+  text-align: inherit;
+}
+
+tr {
+  display: grid;
+  grid-template-columns: minmax(15rem, 25rem) minmax(30rem, 50rem) minmax(
+      15rem,
+      25rem
+    );
+  align-items: center;
+}
