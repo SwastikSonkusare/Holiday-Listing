@@ -2,8 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 3rem;
-  min-width: 600px;
-  min-height: 200px;
+  min-height: 400px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -13,11 +12,13 @@
   opacity: 1;
   z-index: 1000;
 
-  &__left-section {
-    padding-right: 2rem;
-    & h3 {
-      margin-bottom: 4rem;
+  @media only screen and (max-width: 50em) {
+    grid-template-columns: 1fr;
+  }
 
+  &__left-section {
+    // padding-right: 2rem;
+    & h3 {
       & span {
         color: #151b30;
         font-size: 2rem;
@@ -26,16 +27,25 @@
     }
   }
 
+  &__form {
+    border-right: 2px solid #dbdbdb;
+    padding: 2.5rem 2.5rem 3rem 0;
+    margin-top: 2rem;
+  }
+
   &__right-section {
-    padding-inline: 2rem;
-
     position: relative;
+    padding-left: 2rem;
+  }
 
-    & img {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
+  &__close {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4.8px 5px;
+    border: 2px solid #dbdbdb;
+    border-radius: 10px;
   }
 
   &__form-control {
@@ -43,8 +53,11 @@
     display: flex;
     flex-direction: column;
     grid-gap: 5px;
-    margin-bottom: 3rem;
-    border-bottom: 2px solid #dfdfdf;
+    border-bottom: 2px solid #eaeaee;
+
+    &:not(:last-child) {
+      margin-bottom: 2.2rem;
+    }
 
     & img {
       position: absolute;
@@ -83,6 +96,8 @@
     & select {
       color: #232326;
       font-size: 1.3rem;
+      margin: 0;
+      width: 100%;
     }
 
     &::after {
@@ -105,12 +120,33 @@
   }
 
   &__container {
-    margin-top: 6rem;
+    margin-top: 7.5rem;
   }
 
   &__paragraph {
     color: #9898a5;
     line-height: 1.5rem;
+    max-width: 25rem;
+
+    & span {
+      padding: 2px;
+      color: #fedb41;
+      background-color: #fff1de;
+      font-weight: 500;
+    }
+  }
+
+  &__button {
+    margin-top: 2rem;
+    position: absolute;
+    right: 3.2rem;
+    bottom: 22px;
+    width: 100px;
+    color: #fff;
+    background-color: #40d2ac;
+    border: none;
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
   }
 }
 
@@ -120,4 +156,3 @@
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
 }
-

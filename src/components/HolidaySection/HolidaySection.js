@@ -13,6 +13,8 @@ const HolidaySection = () => {
   const [holidayTabsSelect, setHolidayTabSelect] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
+  const [holidayList, setHolidayList] = useState([]);
+
   return (
     <section className="holiday">
       <div className="holiday__left-section">
@@ -97,7 +99,11 @@ const HolidaySection = () => {
         </div>
       </div>
 
-      <Modal isOpen={isOpen} />
+      <Modal
+        isOpen={isOpen}
+        setHolidayList={setHolidayList}
+        setIsOpen={setIsOpen}
+      />
     </section>
   );
 };
