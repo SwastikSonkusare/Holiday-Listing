@@ -194,6 +194,7 @@ const Modal = ({
             )}
           </div>
         </div>
+        <div></div>
 
         <button className="modal__button" onClick={closeModalHandler}>
           Save

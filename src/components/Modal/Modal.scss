@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 3rem;
-  width: 80rem;
-  max-width: 100%;
+  max-width: 80rem;
+  width: 100%;
   min-height: 400px;
   position: fixed;
   top: 50%;
@@ -14,12 +14,19 @@
   opacity: 1;
   z-index: 1000;
 
+  & div:nth-child(3) {
+    @media only screen and (max-width: 50em) {
+      display: none;
+    }
+  }
+
   &__right-section {
     position: relative;
     padding-left: 2rem;
 
     @media only screen and (max-width: 50em) {
       position: initial;
+      padding: 0;
     }
   }
 
@@ -38,7 +45,7 @@
     margin: 7.5rem 0 10rem 0;
 
     @media only screen and (max-width: 50em) {
-      margin: 4rem;
+      margin: 0;
     }
   }
 
@@ -46,6 +53,10 @@
     color: #9898a5;
     line-height: 2rem;
     max-width: 25rem;
+
+    @media only screen and (max-width: 50em) {
+      margin: 0 auto;
+    }
   }
 
   &__csv {
@@ -56,10 +67,8 @@
   }
 
   &__button {
-    margin-top: 2rem;
-    position: absolute;
-    right: 3.2rem;
-    bottom: 22px;
+    max-height: 60px;
+    margin-left: auto;
     width: 100px;
     color: #fff;
     background-color: #40d2ac;
@@ -67,6 +76,10 @@
     border-radius: 10px;
     padding: 0.7rem 1rem;
     cursor: pointer;
+
+    @media only screen and (max-width: 50em) {
+      margin: 3rem auto 0 auto;
+    }
   }
 
   &__click-here {

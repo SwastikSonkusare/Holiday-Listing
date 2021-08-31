@@ -1,6 +1,7 @@
 .modal {
   @media only screen and (max-width: 50em) {
     grid-template-columns: 1fr;
+    height: 100%;
   }
 
   &__left-section {
