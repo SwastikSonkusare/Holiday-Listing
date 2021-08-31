@@ -127,7 +127,7 @@ const Modal = ({
     <>
       <div className="overlay"></div>
       <div className="modal">
-      <ModalForm formData={formData} setFormData={setFormData} />
+        <ModalForm formData={formData} setFormData={setFormData} />
 
         <div className="modal__right-section">
           <img
@@ -138,8 +138,8 @@ const Modal = ({
           ></img>
           <div className="modal__container">
             <p className="modal__paragraph">
-              Download Sample in <span>.csv format</span> file to ensure that
-              you have the correct file ready to import
+              Download Sample in <span className="modal__csv">.csv format</span>{" "}
+              file to ensure that you have the correct file ready to import
             </p>
 
             <div
@@ -167,7 +167,6 @@ const Modal = ({
                   const result = parse(text, { header: true });
 
                   setHolidayList([
-                    // ...holidayList,
                     ...result?.data.map((n) => ({ ...n, id: uuidv4() })),
                   ]);
 
@@ -178,13 +177,13 @@ const Modal = ({
               <input {...getInputProps()} />
               <img src={fileIcon} alt="fileIcon"></img>
               <p className="modal__paragraph">
-                Drag and drop CSV file <br /> or <span>Click here</span> to
-                upload
+                Drag and drop CSV file <br /> or{" "}
+                <span className="modal__click-here">Click here</span> to upload
               </p>
             </div>
             {files?.length ? (
               <>
-                <h4>Files</h4>
+                <h4 className="modal__files">Files</h4>
                 {files}
               </>
             ) : (

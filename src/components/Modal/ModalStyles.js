@@ -3,7 +3,7 @@ export const baseStyle = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  padding: "15px 50px",
+  padding: "30px 50px",
   marginTop: "20px",
   borderWidth: 2,
   borderRadius: 10,
