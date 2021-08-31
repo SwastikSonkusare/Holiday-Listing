@@ -1,19 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import calenderIcon from "../../assets/icons/Group 856.svg";
 import filterIcon from "../../assets/icons/filter-line.svg";
 import plusIcon from "../../assets/icons/plus-line.svg";
+import editIcon from "../../assets/icons/edit.svg";
+import deleteIcon from "../../assets/icons/delete.svg";
 
 import "./HolidaySection.scss";
 import Modal from "../Modal/Modal";
 
 const HolidaySection = () => {
+  const initialState = {
+    name: "",
+    type: "Optional",
+    date: "",
+  };
+
+  const [formData, setFormData] = useState(initialState);
+  const [currentId, setCurrentId] = useState(null);
+
   const holidayTabs = ["General", "Holiday", "Leave"];
 
   const [holidayTabsSelect, setHolidayTabSelect] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
   const [holidayList, setHolidayList] = useState([]);
+
+  const list = currentId ? holidayList.find((l) => l.id === currentId) : null;
+
+  useEffect(() => {
+    if (currentId) {
+      setIsOpen(true);
+
+      setFormData({ name: list.name, type: list.type, date: list.date });
+    }
+  }, [currentId]);
+
+  const deleteHandler = (list) => {
+    const filteredList = holidayList.filter((hl) => hl.id !== list.id);
+
+    setHolidayList(filteredList);
+  };
 
   return (
     <section className="holiday">
@@ -85,14 +112,32 @@ const HolidaySection = () => {
                 <th>Name</th>
                 <th>Type</th>
                 <th>Date</th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <td>John Doe</td>
-                <td>Optional</td>
-                <td>121212</td>
+                {holidayList.length
+                  ? holidayList.map((list) => (
+                      <>
+                        <td>{list.name}</td>
+                        <td>{list.type}</td>
+                        <td>{list.date}</td>
+                        {list.name && (
+                          <>
+                            <td onClick={() => setCurrentId(list.id)}>
+                              <img src={editIcon} alt="edit"></img>
+                            </td>
+                            <td onClick={() => deleteHandler(list)}>
+                              <img src={deleteIcon} alt="delete"></img>
+                            </td>
+                          </>
+                        )}
+                      </>
+                    ))
+                  : ""}
               </tr>
             </tbody>
           </table>
@@ -103,6 +148,10 @@ const HolidaySection = () => {
         isOpen={isOpen}
         setHolidayList={setHolidayList}
         setIsOpen={setIsOpen}
+        holidayList={holidayList}
+        formData={formData}
+        setFormData={setFormData}
+        currentId={currentId}
       />
     </section>
   );

@@ -1,5 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 
+import { v4 as uuidv4 } from "uuid";
+
 import calenderIcon from "../../assets/icons/Group 856.svg";
 import closeIcon from "../../assets/icons/Layer 2 (3).svg";
 import fileIcon from "../../assets/icons/Layer 2 (4).svg";
@@ -16,14 +18,20 @@ import {
 
 import "./Modal.scss";
 
-const Modal = ({ isOpen, setHolidayList, setIsOpen }) => {
-  const [holidayName, setHolidayName] = useState("");
+const Modal = ({
+  isOpen,
+  setHolidayList,
+  setIsOpen,
+  formData,
+  setFormData,
+  holidayList,
+  currentId,
+}) => {
   const [files, setFiles] = useState();
 
-  const [holidayDate, setHolidayDate] = useState("");
-  const [holidayType, setHolidayType] = useState("Optional");
+  const [loading, setLoading] = useState(false);
 
-  let {
+  const {
     acceptedFiles,
     getRootProps,
     getInputProps,
@@ -44,6 +52,8 @@ const Modal = ({ isOpen, setHolidayList, setIsOpen }) => {
 
   useEffect(() => {
     if (acceptedFiles.length !== null) {
+      setLoading(true);
+
       setFiles(
         acceptedFiles.map((file) => (
           <li key={file.path}>
@@ -51,8 +61,45 @@ const Modal = ({ isOpen, setHolidayList, setIsOpen }) => {
           </li>
         ))
       );
+
+      acceptedFiles.forEach(async (file) => {
+        const text = await file.text();
+        const result = parse(text, { header: true });
+
+        setHolidayList(
+          result?.data.slice(0, -1).map((n) => ({ ...n, id: uuidv4() }))
+        );
+        setLoading(false);
+      });
     }
   }, [acceptedFiles]);
+
+  const closeModalHandler = () => {
+    setIsOpen(false);
+    if (formData.name && formData.date && formData.type) {
+      setLoading(true);
+
+      let newList = {
+        id: currentId,
+        name: formData.name,
+        type: formData.type,
+        date: formData.date,
+      };
+
+      setHolidayList([
+        ...holidayList,
+        holidayList.map((l) =>
+          l.id === newList.id
+            ? ((l.name = newList.name),
+              (l.type = newList.type),
+              (l.date = newList.date))
+            : l
+        ),
+      ]);
+      setLoading(false);
+      setFiles("");
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -71,8 +118,11 @@ const Modal = ({ isOpen, setHolidayList, setIsOpen }) => {
               <input
                 type="text"
                 className="modal__input"
-                value={holidayName}
-                onChange={(e) => setHolidayName(e.target.value)}
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                placeholder="Type in your name..."
               ></input>
             </div>
             <div className="modal__form-control">
@@ -80,8 +130,10 @@ const Modal = ({ isOpen, setHolidayList, setIsOpen }) => {
               <input
                 type="date"
                 className="modal__input"
-                value={holidayDate}
-                onChange={(e) => setHolidayDate(e.target.value)}
+                value={formData.date}
+                onChange={(e) =>
+                  setFormData({ ...formData, date: e.target.value })
+                }
               ></input>
               <img src={calenderIcon} alt="calender"></img>
             </div>
@@ -92,7 +144,9 @@ const Modal = ({ isOpen, setHolidayList, setIsOpen }) => {
                 <select
                   name="holidayType"
                   id="holidayType"
-                  onChange={(e) => setHolidayType(e.target.value)}
+                  onChange={(e) =>
+                    setFormData({ ...formData, type: e.target.value })
+                  }
                 >
                   <option value="Optional">Optional</option>
                   <option value="Beach Holidays">Beach Holidays</option>
@@ -122,6 +176,7 @@ const Modal = ({ isOpen, setHolidayList, setIsOpen }) => {
               }}
               onDrop={(e) => {
                 e.preventDefault();
+                setLoading(true);
 
                 setFiles(
                   Array.from(e.dataTransfer.files).map((file) => (
@@ -135,8 +190,15 @@ const Modal = ({ isOpen, setHolidayList, setIsOpen }) => {
 
                 Array.from(e.dataTransfer.files).forEach(async (file) => {
                   const text = await file.text();
+
                   const result = parse(text, { header: true });
-                  setHolidayList(result);
+
+                  setHolidayList(
+                    result?.data
+                      .slice(0, -1)
+                      .map((n) => ({ ...n, id: uuidv4() }))
+                  );
+                  setLoading(false);
                 });
               }}
             >
@@ -158,7 +220,9 @@ const Modal = ({ isOpen, setHolidayList, setIsOpen }) => {
           </div>
         </div>
 
-        <button className="modal__button">Save</button>
+        <button className="modal__button" onClick={closeModalHandler}>
+          Save
+        </button>
       </div>
     </>
   );

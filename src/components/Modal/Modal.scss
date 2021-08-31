@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 3rem;
+
   min-height: 400px;
   position: fixed;
   top: 50%;
@@ -12,12 +13,11 @@
   opacity: 1;
   z-index: 1000;
 
-  @media only screen and (max-width: 50em) {
-    grid-template-columns: 1fr;
-  }
+  // @media only screen and (max-width: 50em) {
+  //   grid-template-columns: 1fr;
+  // }
 
   &__left-section {
-    // padding-right: 2rem;
     & h3 {
       & span {
         color: #151b30;
@@ -125,7 +125,7 @@
 
   &__paragraph {
     color: #9898a5;
-    line-height: 1.5rem;
+    line-height: 2rem;
     max-width: 25rem;
 
     & span {
@@ -155,4 +155,8 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
+}
+
+.list {
+  margin-top: 0.5rem;
 }

@@ -101,6 +101,7 @@
     display: flex;
     align-items: center;
     grid-gap: 1rem;
+    cursor: pointer;
   }
   &__new-item {
     & span {
@@ -150,10 +151,13 @@ table {
 
 thead {
   display: grid;
-  grid-template-columns: minmax(15rem, 25rem) minmax(30rem, 50rem) minmax(
-      15rem,
-      25rem
-    );
+  // grid-template-columns: minmax(15rem, 25rem) minmax(30rem, 50rem) minmax(
+  //     15rem,
+  //     25rem
+  //   );
+
+  // grid-template-columns: 1fr 2fr 1fr 0.5fr 0.5fr;
+
   align-items: center;
   width: 100%;
   font-size: 1.3rem;
@@ -171,9 +175,28 @@ th {
 
 tr {
   display: grid;
-  grid-template-columns: minmax(15rem, 25rem) minmax(30rem, 50rem) minmax(
-      15rem,
-      25rem
-    );
+  // grid-template-columns: minmax(15rem, 25rem) minmax(30rem, 50rem) minmax(
+  //     15rem,
+  //     25rem
+  //   );
+  grid-template-columns: 1fr 4.5fr 2fr 0.5fr 0.5fr;
+  grid-column-gap: 1.5rem;
   align-items: center;
+  padding-left: 1rem;
+}
+
+tr td {
+  padding: 1.5rem 0;
+  color: #151b30;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+tr td img {
+  width: 12px;
+  height: 12px;
+}
+
+tr td:nth-child(5n + 2) {
+  color: #585a64;
 }
