@@ -5,6 +5,7 @@ import chatIcon from "../../assets/icons/Layer 2.svg";
 import questionIcon from "../../assets/icons/Layer 2 (1).svg";
 import settingsIcon1 from "../../assets/icons/Layer 2 (2).svg";
 import userIcon from "../../assets/icons/Group 815.svg";
+import moneyIcon from "../../assets/icons/money.svg";
 
 import "./Navbar.scss";
 
@@ -14,13 +15,13 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar__logo">
-        <img src={settingsIcon} alt="setting" ></img>
+        <img src={settingsIcon} alt="setting"></img>
         <span>Setting</span>
       </div>
 
       <ul className="navbar__items">
-        {liItems.map((item) => (
-          <li className="navbar__item">
+        {liItems.map((item, i) => (
+          <li className="navbar__item" key={i}>
             <a href="#" className="navbar__links">
               <img src={item} alt="item" className="navbar__icons"></img>
             </a>
@@ -28,6 +29,7 @@ const Navbar = () => {
         ))}
 
         <div className="navbar__select">
+          <img src={moneyIcon} alt="moneyIcon" className="navbar__money"></img>
           <select name="money" id="money">
             <option value="50,000">50,000</option>
           </select>

@@ -8,14 +8,13 @@ import icon5 from "../../assets/icons/Path 1974.svg";
 
 import "./Sidebar.scss";
 
-const Sidebar = ({ showSidebar }) => {
+const Sidebar = ({ showSidebar, sidebarRef }) => {
   const icons = [icon2, icon3, icon4, icon5];
 
   const [tabSelect, setTabSelect] = useState("");
 
   return (
-    <div className={showSidebar ? "sidebar active" : "sidebar"}>
-      <aside className="sidebar__container">
+      <aside className="sidebar" ref={sidebarRef}>
         <img src={icon1} alt="rightArrowIcon" className="sidebar__arrow"></img>
 
         <div className="sidebar__icons">
@@ -29,7 +28,6 @@ const Sidebar = ({ showSidebar }) => {
           ))}
         </div>
       </aside>
-    </div>
   );
 };
 
