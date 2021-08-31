@@ -166,9 +166,14 @@ const Modal = ({
 
                   const result = parse(text, { header: true });
 
-                  setHolidayList([
-                    ...result?.data.map((n) => ({ ...n, id: uuidv4() })),
-                  ]);
+                  console.log(result.data);
+
+                  setHolidayList(
+                    [
+                      ...holidayList,
+                      ...result?.data.map((n) => ({ ...n, id: uuidv4() })),
+                    ].slice(0, -1)
+                  );
 
                   setLoading(false);
                 });
