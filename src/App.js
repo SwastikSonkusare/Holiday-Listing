@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 
 import arrow from "./assets/icons/rightarrow.svg";
 
@@ -7,8 +7,6 @@ import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 const App = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
-
   const sidebarRef = useRef();
 
   const toggleSideBarHandler = () => {
@@ -17,7 +15,7 @@ const App = () => {
 
   return (
     <main className="main">
-      <Sidebar showSidebar={showSidebar} sidebarRef={sidebarRef} />
+      <Sidebar sidebarRef={sidebarRef} />
       <div className="container">
         <Navbar />
         <HolidaySection />

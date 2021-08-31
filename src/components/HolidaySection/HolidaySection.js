@@ -40,11 +40,34 @@ const HolidaySection = () => {
     setHolidayList(filteredList);
   };
 
+  const addToLocalStorage = (holidayList) => {
+    localStorage.setItem("holidayList", JSON.stringify(holidayList));
+  };
+
+  // function helps to get everything from local storage
+  const getFromLocalStorage = () => {
+    const reference = localStorage.getItem("holidayList");
+    // if reference exists
+    if (reference) {
+      // converts back to array and store it in todos array
+      setHolidayList(JSON.parse(reference));
+    }
+  };
+
+  useEffect(() => {
+    getFromLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    addToLocalStorage(holidayList);
+  }, [holidayList]);
+
   return (
     <section className="holiday">
       <div className="holiday__left-section">
-        {holidayTabs.map((holiday) => (
+        {holidayTabs.map((holiday, i) => (
           <button
+            key={i}
             className={
               holidayTabsSelect === holiday
                 ? "holiday__button active"

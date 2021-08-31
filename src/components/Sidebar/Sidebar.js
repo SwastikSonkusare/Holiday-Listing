@@ -8,26 +8,29 @@ import icon5 from "../../assets/icons/Path 1974.svg";
 
 import "./Sidebar.scss";
 
-const Sidebar = ({ showSidebar, sidebarRef }) => {
+const Sidebar = ({ sidebarRef }) => {
   const icons = [icon2, icon3, icon4, icon5];
 
   const [tabSelect, setTabSelect] = useState("");
 
   return (
-      <aside className="sidebar" ref={sidebarRef}>
-        <img src={icon1} alt="rightArrowIcon" className="sidebar__arrow"></img>
+    <aside className="sidebar" ref={sidebarRef}>
+      <img src={icon1} alt="rightArrowIcon" className="sidebar__arrow"></img>
 
-        <div className="sidebar__icons">
-          {icons.map((icon, i) => (
-            <div
-              className={tabSelect === i && "sidebar__icons active"}
-              onClick={() => setTabSelect(i)}
-            >
-              <img src={icon} alt="icon"></img>
-            </div>
-          ))}
-        </div>
-      </aside>
+      <div className="sidebar__icons">
+        {icons.map((icon, i) => (
+          <div
+            className={
+              tabSelect === i ? "sidebar__icons active" : "sidebar__icons"
+            }
+            onClick={() => setTabSelect(i)}
+            key={i}
+          >
+            <img src={icon} alt="icon"></img>
+          </div>
+        ))}
+      </div>
+    </aside>
   );
 };
 
