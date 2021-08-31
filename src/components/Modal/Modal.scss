@@ -14,7 +14,11 @@
   opacity: 1;
   z-index: 1000;
 
-  & div:nth-child(3) {
+  @media only screen and (max-width: 50em) {
+    grid-template-columns: 1fr;
+  }
+
+  &__empty-fragment {
     @media only screen and (max-width: 50em) {
       display: none;
     }

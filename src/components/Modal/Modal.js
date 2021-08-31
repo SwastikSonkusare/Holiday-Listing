@@ -194,7 +194,7 @@ const Modal = ({
             )}
           </div>
         </div>
-        <div></div>
+        <div className="modal__empty-fragment"></div>
 
         <button className="modal__button" onClick={closeModalHandler}>
           Save
