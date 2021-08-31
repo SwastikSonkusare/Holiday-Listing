@@ -14,36 +14,10 @@
   opacity: 1;
   z-index: 1000;
 
-  @media only screen and (max-width: 50em) {
-    grid-template-columns: 1fr;
-  }
-
-  &__left-section {
-    & h3 {
-      & span {
-        color: #151b30;
-        font-size: 2rem;
-        font-weight: bold;
-      }
-    }
-  }
-
-  &__form {
-    border-right: 2px solid #dbdbdb;
-    padding: 2.5rem 2.5rem 3rem 0;
-    margin-top: 2rem;
-
-    @media only screen and (max-width: 50em) {
-      border: none;
-    }
-  
-  }
-
   &__right-section {
     position: relative;
     padding-left: 2rem;
-    
-    
+
     @media only screen and (max-width: 50em) {
       position: initial;
     }
@@ -57,89 +31,11 @@
     padding: 4.8px 5px;
     border: 2px solid #dbdbdb;
     border-radius: 10px;
-
-       
-    @media only screen and (max-width: 50em) {
-      top: 2rem;
-      right: 4rem;
-    }
-  }
-
-  &__form-control {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    grid-gap: 5px;
-    border-bottom: 2px solid #eaeaee;
-
-    &:not(:last-child) {
-      margin-bottom: 2.2rem;
-    }
-
-    & img {
-      position: absolute;
-      top: 50%;
-      right: 3px;
-      display: block;
-      width: 16px;
-      height: 14px;
-      z-index: 10;
-    }
-  }
-
-  &__label {
-    color: #9898a5;
-    font-weight: 600;
-  }
-
-  &__input {
-    color: #232326;
-    border: none;
-
-    &[type="date"]::-webkit-inner-spin-button,
-    &[type="date"]::-webkit-calendar-picker-indicator {
-      position: relative;
-      opacity: 0.1;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  &__select {
-    position: relative;
-
-    & select {
-      color: #232326;
-      font-size: 1.3rem;
-      margin: 0;
-      width: 100%;
-    }
-
-    &::after {
-      width: 18px;
-      height: 18px;
-      content: ">";
-      color: inherit;
-      -webkit-transform: rotate(90deg);
-      -moz-transform: rotate(90deg);
-      -ms-transform: rotate(90deg);
-      transform: rotate(90deg) translateY(-50%);
-      position: absolute;
-      top: 40%;
-      right: 18px;
-      padding: 0 0 2px;
-      pointer-events: none;
-      font-weight: bold;
-      color: #bbbbbf;
-    }
   }
 
   &__container {
     margin-top: 7.5rem;
-    
-    
+
     @media only screen and (max-width: 50em) {
       margin: 4rem;
     }

@@ -3,11 +3,11 @@ import React, { useState, useEffect } from "react";
 import calenderIcon from "../../assets/icons/Group 856.svg";
 import filterIcon from "../../assets/icons/filter-line.svg";
 import plusIcon from "../../assets/icons/plus-line.svg";
-import editIcon from "../../assets/icons/edit.svg";
-import deleteIcon from "../../assets/icons/delete.svg";
+
+import Modal from "../Modal/Modal";
+import Table from "../Table/Table";
 
 import "./HolidaySection.scss";
-import Modal from "../Modal/Modal";
 
 const HolidaySection = () => {
   const initialState = {
@@ -39,8 +39,6 @@ const HolidaySection = () => {
 
     setHolidayList(filteredList);
   };
-
-  console.log(holidayList);
 
   return (
     <section className="holiday">
@@ -106,47 +104,11 @@ const HolidaySection = () => {
         </div>
 
         <div className="list">
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Date</th>
-                <th>Edit</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                {holidayList.length
-                  ? holidayList.map((list) => (
-                      <>
-                        <td data-label="Name">{list.name}</td>
-                        <td data-label="Type">{list.type}</td>
-                        <td data-label="Date">{list.date}</td>
-                        {list.name && (
-                          <>
-                            <td
-                              data-label="Edit"
-                              onClick={() => setCurrentId(list.id)}
-                            >
-                              <img src={editIcon} alt="edit"></img>
-                            </td>
-                            <td
-                              data-label="Delete"
-                              onClick={() => deleteHandler(list)}
-                            >
-                              <img src={deleteIcon} alt="delete"></img>
-                            </td>
-                          </>
-                        )}
-                      </>
-                    ))
-                  : ""}
-              </tr>
-            </tbody>
-          </table>
+          <Table
+            holidayList={holidayList}
+            deleteHandler={deleteHandler}
+            setCurrentId={setCurrentId}
+          />
         </div>
       </div>
 
