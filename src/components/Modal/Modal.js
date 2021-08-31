@@ -15,9 +15,9 @@ import {
   rejectStyle,
 } from "./ModalStyles";
 
-import "./Modal.scss";
 import ModalForm from "../ModalForm/ModalForm";
 
+import "./Modal.scss";
 const Modal = ({
   isOpen,
   setHolidayList,
