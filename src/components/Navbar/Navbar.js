@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar__logo">
-        <img src={settingsIcon} alt="setting"></img>
+        <img src={settingsIcon} alt="setting" ></img>
         <span>Setting</span>
       </div>
 

@@ -3,6 +3,11 @@
   justify-content: space-between;
   align-items: center;
 
+  @media only screen and (max-width: 37.5em) {
+    width: 100%;
+    flex-direction: column;
+  }
+
   &__logo {
     display: flex;
     align-items: center;
@@ -21,11 +26,12 @@
     align-items: center;
     grid-gap: 2rem;
     list-style: none;
-  }
 
-  &__item {
+    @media only screen and (max-width: 31.25em) {
+      flex-direction: column;
+      margin-top: 1.5rem;
+    }
   }
-
   &__links {
     text-decoration: none;
   }

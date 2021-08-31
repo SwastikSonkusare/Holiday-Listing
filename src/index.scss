@@ -24,19 +24,52 @@ body {
   box-sizing: border-box;
   background-color: #f7f7fa;
   margin: 1.5rem;
-  padding: 1.5rem 1.5rem 0 0;
+  padding-top: 1.5rem;
+  position: relative;
   border: 2px solid #ededf2;
 }
 
-main {
+.main {
+  // position: relative;
   display: flex;
+
+  &__img {
+    display: block;
+    position: absolute;
+    top: 5%;
+    width: 30px;
+    height: 30px;
+
+    @media only screen and (min-width: 37.5em) {
+      display: none;
+    }
+  }
 }
 
+// main::after {
+//   display: none;
+//   content: '';
+//   position: absolute;
+//   top: 50%;
+//   left: -3rem;
+//   transform: translateY(-50%) rotate(0.25turn);
+//   background-color: blue;
+//   height: 25px;
+//   width: 50px;
+//   border-radius: 150px 150px 0 0;
+
+// }
+
 .container {
+  width: 100%;
   max-width: 140rem;
   padding-inline: 5rem;
 
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+
+  @media only screen and (max-width: 37.5em) {
+    padding-inline: 1rem;
+  }
 }

@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 3rem;
-
+  width: 80rem;
+  max-width: 100%;
   min-height: 400px;
   position: fixed;
   top: 50%;
@@ -13,9 +14,9 @@
   opacity: 1;
   z-index: 1000;
 
-  // @media only screen and (max-width: 50em) {
-  //   grid-template-columns: 1fr;
-  // }
+  @media only screen and (max-width: 50em) {
+    grid-template-columns: 1fr;
+  }
 
   &__left-section {
     & h3 {
@@ -31,11 +32,21 @@
     border-right: 2px solid #dbdbdb;
     padding: 2.5rem 2.5rem 3rem 0;
     margin-top: 2rem;
+
+    @media only screen and (max-width: 50em) {
+      border: none;
+    }
+  
   }
 
   &__right-section {
     position: relative;
     padding-left: 2rem;
+    
+    
+    @media only screen and (max-width: 50em) {
+      position: initial;
+    }
   }
 
   &__close {
@@ -46,6 +57,12 @@
     padding: 4.8px 5px;
     border: 2px solid #dbdbdb;
     border-radius: 10px;
+
+       
+    @media only screen and (max-width: 50em) {
+      top: 2rem;
+      right: 4rem;
+    }
   }
 
   &__form-control {
@@ -121,6 +138,11 @@
 
   &__container {
     margin-top: 7.5rem;
+    
+    
+    @media only screen and (max-width: 50em) {
+      margin: 4rem;
+    }
   }
 
   &__paragraph {

@@ -1,7 +1,31 @@
 .sidebar {
-  display: flex;
-  flex-direction: column;
-  grid-gap: 10rem;
+  &.active {
+    display: block;
+    margin-top: 6rem;
+    background-color: #133b5c;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  &.active &__container {
+    transform: translateX(0);
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    display: none;
+    position: absolute;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10rem;
+
+    @media only screen and (max-width: 37.5em) {
+      transform: translateX(-150%);
+    }
+  }
 
   &__arrow {
     display: block;
@@ -19,10 +43,19 @@
     & div {
       padding: 1.5rem 0 1.5rem 2rem;
       cursor: pointer;
+
+      @media only screen and (max-width: 37.5em) {
+        padding: 2rem;
+      }
     }
 
     &.active {
       border-left: 3px solid #22232a;
+
+      @media only screen and (max-width: 37.5em) {
+        border: none;
+        border-bottom: 3px solid #22232a;
+      }
     }
 
     & img {

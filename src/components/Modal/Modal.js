@@ -67,47 +67,40 @@ const Modal = ({
         const text = await file.text();
         const result = parse(text, { header: true });
 
-
         setHolidayList([
           ...holidayList,
-          ...result?.data.slice(0, -1).map((n) => ({ ...n, id: uuidv4() }))
+          ...result?.data.slice(0, -1).map((n) => ({ ...n, id: uuidv4() })),
         ]);
         setLoading(false);
-      }); 
+      });
     }
   }, [acceptedFiles]);
 
   const closeModalHandler = () => {
     setIsOpen(false);
-      setLoading(true);
+    setLoading(true);
 
-      if (formData.name && formData.type && formData.date) {
-        let newList = {
-          id: currentId,
-          name: formData.name,
-          type: formData.type,
-          date: formData.date,
-        };
+    if (formData.name && formData.type && formData.date) {
+      let newList = {
+        id: currentId,
+        name: formData.name,
+        type: formData.type,
+        date: formData.date,
+      };
 
-        const n = holidayList.find((l) => l.id === newList.id);
+      const foundList = holidayList.find((l) => l.id === newList.id);
 
-        if(!n) {
- let l = {
+      if (!foundList) {
+        let l = {
           id: uuidv4(),
-          
+
           name: formData.name,
           type: formData.type,
           date: formData.date,
         };
 
-        console.log(l)
-
-
-          setHolidayList([
-          ...holidayList,
-          l
-        ]);
-        } else {
+        setHolidayList([...holidayList, foundList]);
+      } else {
         setHolidayList([
           ...holidayList,
           holidayList.map((l) =>
@@ -117,14 +110,13 @@ const Modal = ({
                 (l.date = newList.date))
               : l
           ),
-        ]);
+        ].slice(0, -1));
 
-        }
+      }
 
-       
-        setLoading(false);
-        setFiles("");
-      } 
+      setLoading(false);
+      setFiles("");
+    }
     setFormData(initialState);
   };
 
@@ -220,12 +212,12 @@ const Modal = ({
 
                   const result = parse(text, { header: true });
 
-                    setHolidayList([
-          ...holidayList,
-          ...result?.data.slice(0, -1).map((n) => ({ ...n, id: uuidv4() }))
-        ]);
+                  setHolidayList([
+                    // ...holidayList,
+                    ...result?.data
+                      .map((n) => ({ ...n, id: uuidv4() })),
+                  ]);
 
-                
                   setLoading(false);
                 });
               }}

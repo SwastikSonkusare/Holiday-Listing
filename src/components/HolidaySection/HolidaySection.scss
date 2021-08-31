@@ -6,11 +6,25 @@
   opacity: 1;
   // padding: 0 2rem 2rem 2rem;
 
+  @media only screen and (max-width: 56.25em) {
+    flex-direction: column;
+    grid-gap: 2rem;
+  }
+
   &__left-section {
     display: flex;
     flex-direction: column;
     grid-gap: 2rem;
     padding: 4.5rem 2.5rem 0 2.5rem;
+
+    @media only screen and (max-width: 56.25em) {
+      flex-direction: row;
+      justify-content: center;
+    }
+    @media only screen and (max-width: 25em) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &__right-section {
@@ -19,6 +33,11 @@
     flex-direction: column;
     padding: 3.5rem;
     border-left: 2px solid #ededf2;
+
+    @media only screen and (max-width: 56.25em) {
+      border: none;
+      border-top: 2px solid #ededf2;
+    }
   }
 
   &__button {
@@ -27,6 +46,10 @@
     font-size: 1.6rem;
     font-weight: 600;
     padding: 0.7rem 8rem 0.7rem 2rem;
+
+    @media only screen and (max-width: 43.75em) {
+      padding: 1rem 2rem;
+    }
 
     &.active {
       color: #405cd2;
@@ -40,6 +63,12 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+
+    @media only screen and (max-width: 25em) {
+      flex-direction: column;
+      grid-gap: 2rem;
+      align-items: center;
+    }
 
     & h2 {
       & span {
@@ -77,6 +106,12 @@
     align-items: center;
     justify-content: space-between;
     padding-right: 6rem;
+
+    @media only screen and (max-width: 56.25em) {
+      padding: 0;
+      flex-direction: column;
+      grid-gap: 1rem;
+    }
 
     & span {
       color: #232326;
@@ -179,7 +214,7 @@ tr {
   //     15rem,
   //     25rem
   //   );
-  grid-template-columns: 1fr 4.5fr 2fr 0.5fr 0.5fr;
+  grid-template-columns: 2fr 7.5fr 2fr 0.5fr 0.5fr;
   grid-column-gap: 1.5rem;
   align-items: center;
   padding-left: 1rem;
@@ -199,4 +234,39 @@ tr td img {
 
 tr td:nth-child(5n + 2) {
   color: #585a64;
+}
+
+@media (max-width: 43.75em) {
+  thead {
+    display: none;
+  }
+
+  table tbody,
+  table tr,
+  table td {
+    display: block;
+    width: 100%;
+  }
+
+  table tr {
+    padding: 0;
+  }
+
+  table td:nth-child(5n) {
+    border-bottom: 5px solid #405cd2;
+  }
+
+  table td {
+    position: relative;
+    text-align: right;
+    padding-left: 50%;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    text-align: left;
+  }
 }

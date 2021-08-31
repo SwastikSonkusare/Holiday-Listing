@@ -16,7 +16,6 @@ const HolidaySection = () => {
     date: "",
   };
 
-
   const [formData, setFormData] = useState(initialState);
   const [currentId, setCurrentId] = useState(null);
 
@@ -41,7 +40,7 @@ const HolidaySection = () => {
     setHolidayList(filteredList);
   };
 
-
+  console.log(holidayList);
 
   return (
     <section className="holiday">
@@ -113,8 +112,8 @@ const HolidaySection = () => {
                 <th>Name</th>
                 <th>Type</th>
                 <th>Date</th>
-                <th></th>
-                <th></th>
+                <th>Edit</th>
+                <th>Delete</th>
               </tr>
             </thead>
 
@@ -123,15 +122,21 @@ const HolidaySection = () => {
                 {holidayList.length
                   ? holidayList.map((list) => (
                       <>
-                        <td>{list.name}</td>
-                        <td>{list.type}</td>
-                        <td>{list.date}</td>
+                        <td data-label="Name">{list.name}</td>
+                        <td data-label="Type">{list.type}</td>
+                        <td data-label="Date">{list.date}</td>
                         {list.name && (
                           <>
-                            <td onClick={() => setCurrentId(list.id)}>
+                            <td
+                              data-label="Edit"
+                              onClick={() => setCurrentId(list.id)}
+                            >
                               <img src={editIcon} alt="edit"></img>
                             </td>
-                            <td onClick={() => deleteHandler(list)}>
+                            <td
+                              data-label="Delete"
+                              onClick={() => deleteHandler(list)}
+                            >
                               <img src={deleteIcon} alt="delete"></img>
                             </td>
                           </>
