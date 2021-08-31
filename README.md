@@ -1,6 +1,6 @@
 # Holiday Manage Landing Page
 
-[Live Site](https://swastik-sonkusare.netlify.app/ "Holiday Manage Landing Page")
+[Live Site](https://holiday-list-manage.netlify.app/ "Holiday Manage Landing Page")
 
 ![Holiday Manage Landing Page](https://user-images.githubusercontent.com/59872341/131531689-64d7db8b-4716-427f-b6cb-23b9fb50e359.png)
 

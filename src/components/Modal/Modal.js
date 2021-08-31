@@ -166,8 +166,6 @@ const Modal = ({
 
                   const result = parse(text, { header: true });
 
-                  console.log(result.data);
-
                   setHolidayList(
                     [
                       ...holidayList,
