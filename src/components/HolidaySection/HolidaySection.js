@@ -16,6 +16,7 @@ const HolidaySection = () => {
     date: "",
   };
 
+
   const [formData, setFormData] = useState(initialState);
   const [currentId, setCurrentId] = useState(null);
 
@@ -26,13 +27,11 @@ const HolidaySection = () => {
 
   const [holidayList, setHolidayList] = useState([]);
 
-  const list = currentId ? holidayList.find((l) => l.id === currentId) : null;
-
   useEffect(() => {
+    const list = currentId ? holidayList.find((l) => l.id === currentId) : null;
     if (currentId) {
       setIsOpen(true);
-
-      setFormData({ name: list.name, type: list.type, date: list.date });
+      setFormData({ name: list?.name, type: list?.type, date: list?.date });
     }
   }, [currentId]);
 
@@ -41,6 +40,8 @@ const HolidaySection = () => {
 
     setHolidayList(filteredList);
   };
+
+
 
   return (
     <section className="holiday">
@@ -152,6 +153,7 @@ const HolidaySection = () => {
         formData={formData}
         setFormData={setFormData}
         currentId={currentId}
+        initialState={initialState}
       />
     </section>
   );

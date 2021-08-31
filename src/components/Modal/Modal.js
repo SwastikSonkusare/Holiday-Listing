@@ -26,6 +26,7 @@ const Modal = ({
   setFormData,
   holidayList,
   currentId,
+  initialState,
 }) => {
   const [files, setFiles] = useState();
 
@@ -66,39 +67,65 @@ const Modal = ({
         const text = await file.text();
         const result = parse(text, { header: true });
 
-        setHolidayList(
-          result?.data.slice(0, -1).map((n) => ({ ...n, id: uuidv4() }))
-        );
+
+        setHolidayList([
+          ...holidayList,
+          ...result?.data.slice(0, -1).map((n) => ({ ...n, id: uuidv4() }))
+        ]);
         setLoading(false);
-      });
+      }); 
     }
   }, [acceptedFiles]);
 
   const closeModalHandler = () => {
     setIsOpen(false);
-    if (formData.name && formData.date && formData.type) {
       setLoading(true);
 
-      let newList = {
-        id: currentId,
-        name: formData.name,
-        type: formData.type,
-        date: formData.date,
-      };
+      if (formData.name && formData.type && formData.date) {
+        let newList = {
+          id: currentId,
+          name: formData.name,
+          type: formData.type,
+          date: formData.date,
+        };
 
-      setHolidayList([
-        ...holidayList,
-        holidayList.map((l) =>
-          l.id === newList.id
-            ? ((l.name = newList.name),
-              (l.type = newList.type),
-              (l.date = newList.date))
-            : l
-        ),
-      ]);
-      setLoading(false);
-      setFiles("");
-    }
+        const n = holidayList.find((l) => l.id === newList.id);
+
+        if(!n) {
+ let l = {
+          id: uuidv4(),
+          
+          name: formData.name,
+          type: formData.type,
+          date: formData.date,
+        };
+
+        console.log(l)
+
+
+          setHolidayList([
+          ...holidayList,
+          l
+        ]);
+        } else {
+        setHolidayList([
+          ...holidayList,
+          holidayList.map((l) =>
+            l.id === newList.id
+              ? ((l.name = newList.name),
+                (l.type = newList.type),
+                (l.date = newList.date))
+              : l
+          ),
+        ]);
+
+        }
+
+       
+        setLoading(false);
+        setFiles("");
+      } 
+    setFormData(initialState);
   };
 
   if (!isOpen) return null;
@@ -160,7 +187,7 @@ const Modal = ({
           <img
             src={closeIcon}
             alt="closeIcon"
-            onClick={() => setIsOpen(false)}
+            onClick={closeModalHandler}
             className="modal__close"
           ></img>
           <div className="modal__container">
@@ -193,11 +220,12 @@ const Modal = ({
 
                   const result = parse(text, { header: true });
 
-                  setHolidayList(
-                    result?.data
-                      .slice(0, -1)
-                      .map((n) => ({ ...n, id: uuidv4() }))
-                  );
+                    setHolidayList([
+          ...holidayList,
+          ...result?.data.slice(0, -1).map((n) => ({ ...n, id: uuidv4() }))
+        ]);
+
+                
                   setLoading(false);
                 });
               }}
