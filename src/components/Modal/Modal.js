@@ -1,12 +1,12 @@
 import React, { useState, useMemo, useEffect } from "react";
 
 import { v4 as uuidv4 } from "uuid";
+import { useDropzone } from "react-dropzone";
+import { parse } from "papaparse";
 
 import closeIcon from "../../assets/icons/Layer 2 (3).svg";
 import fileIcon from "../../assets/icons/Layer 2 (4).svg";
 
-import { useDropzone } from "react-dropzone";
-import { parse } from "papaparse";
 
 import {
   baseStyle,
@@ -29,7 +29,6 @@ const Modal = ({
   initialState,
 }) => {
   const [files, setFiles] = useState();
-
   const [loading, setLoading] = useState(false);
 
   const {

@@ -10,7 +10,6 @@ import "./Sidebar.scss";
 
 const Sidebar = ({ sidebarRef }) => {
   const icons = [icon2, icon3, icon4, icon5];
-
   const [tabSelect, setTabSelect] = useState("");
 
   return (

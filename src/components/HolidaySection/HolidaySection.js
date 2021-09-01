@@ -10,21 +10,18 @@ import Table from "../Table/Table";
 import "./HolidaySection.scss";
 
 const HolidaySection = () => {
+  const [formData, setFormData] = useState(initialState);
+  const [currentId, setCurrentId] = useState(null);
+  const holidayTabs = ["General", "Holiday", "Leave"];
+  const [holidayTabsSelect, setHolidayTabSelect] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [holidayList, setHolidayList] = useState([]);
+
   const initialState = {
     name: "",
     type: "Optional",
     date: "",
   };
-
-  const [formData, setFormData] = useState(initialState);
-  const [currentId, setCurrentId] = useState(null);
-
-  const holidayTabs = ["General", "Holiday", "Leave"];
-
-  const [holidayTabsSelect, setHolidayTabSelect] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-
-  const [holidayList, setHolidayList] = useState([]);
 
   useEffect(() => {
     const list = currentId ? holidayList.find((l) => l.id === currentId) : null;
